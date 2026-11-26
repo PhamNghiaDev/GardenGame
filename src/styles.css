@@ -1,0 +1,480 @@
+@import 'tailwindcss' source(none);
+@source './';
+
+@theme static {
+  --color-garden-wall: #ede8d4;
+  --color-garden-stage: #fffdec;
+  --color-garden-ink: #6b4a3a;
+  --color-garden-button: #fff4e4;
+  --color-garden-button-edge: #f0cfa6;
+  --color-garden-coin: #ffd66b;
+  --color-garden-coin-edge: #f0b43c;
+  --color-garden-exit: #ffe3dc;
+  --color-garden-exit-edge: #f2b5a6;
+  --color-garden-shop: #fff0cc;
+  --color-garden-shop-edge: #f0cf86;
+  --color-garden-water: #e4f4fb;
+  --color-garden-water-edge: #a8d8ee;
+  --color-garden-focus: #8ccbe8;
+}
+
+:root {
+  font-family: 'Baloo 2', 'Nunito', 'Trebuchet MS', system-ui, sans-serif;
+  color: var(--color-garden-ink);
+  background: var(--color-garden-wall);
+}
+
+.app {
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+}
+
+.garden-stage {
+  position: relative;
+  container-type: inline-size;
+  width: min(100%, calc(100svh * 4 / 3), 1920px);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-garden-stage);
+}
+
+.balcony {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.garden-hud {
+  --hud-inset: clamp(8px, 1.25cqw, 24px);
+  --hud-button-size: clamp(36px, 5cqw, 96px);
+  --hud-tool-size: clamp(52px, 10cqw, 192px);
+}
+
+.hud-corner {
+  position: absolute;
+  gap: clamp(5px, 1.04cqw, 20px);
+  margin: var(--hud-inset);
+}
+
+.hud-item {
+  --hud-fill: var(--color-garden-button);
+  --hud-edge: var(--color-garden-button-edge);
+
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  line-height: 1;
+  background: var(--hud-fill);
+  border: clamp(2px, 0.31cqw, 6px) solid var(--hud-edge);
+  box-shadow: 0 clamp(2px, 0.42cqw, 8px) 0 var(--hud-edge);
+  pointer-events: auto;
+}
+
+.hud-item:focus-visible {
+  outline: 3px solid var(--color-garden-focus);
+  outline-offset: 2px;
+}
+
+.hud-counter {
+  display: flex;
+  gap: clamp(4px, 0.83cqw, 16px);
+  height: var(--hud-button-size);
+  padding: 0 clamp(8px, 1.88cqw, 36px) 0 clamp(4px, 0.63cqw, 12px);
+  border-radius: 999px;
+  font-size: clamp(13px, 2.3cqw, 44px);
+}
+
+.hud-counter svg {
+  width: calc(var(--hud-button-size) * 0.71);
+}
+
+.hud-button {
+  width: var(--hud-button-size);
+  height: var(--hud-button-size);
+  border-radius: clamp(12px, 1.67cqw, 32px);
+}
+
+.hud-button svg {
+  width: 66%;
+}
+
+.hud-tool {
+  align-content: center;
+  width: var(--hud-tool-size);
+  height: var(--hud-tool-size);
+  border-radius: clamp(16px, 3.33cqw, 64px);
+  font-size: clamp(9px, 1.56cqw, 30px);
+}
+
+.hud-tool svg {
+  width: 66%;
+}
+
+.hud-exit {
+  --hud-fill: var(--color-garden-exit);
+  --hud-edge: var(--color-garden-exit-edge);
+}
+
+.hud-shop {
+  --hud-fill: var(--color-garden-shop);
+  --hud-edge: var(--color-garden-shop-edge);
+}
+
+.hud-water {
+  --hud-fill: var(--color-garden-water);
+  --hud-edge: var(--color-garden-water-edge);
+}
+
+.hud-shovel {
+  --hud-fill: #e8f5df;
+  --hud-edge: #b9dc9f;
+}
+
+.hud-tool img {
+  width: 66%;
+}
+
+.hud-tool[aria-pressed='true'] {
+  outline: 3px solid var(--color-garden-coin);
+  outline-offset: 2px;
+}
+
+.hud-badge {
+  position: absolute;
+  top: -0.45rem;
+  right: -0.45rem;
+  min-width: 1.2rem;
+  padding: 0.18rem 0.3rem;
+  border: 2px solid white;
+  border-radius: 999px;
+  background: var(--color-garden-exit);
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.pot-controls {
+  pointer-events: none;
+}
+
+.pot-button {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  transform: translateX(-50%);
+  border-radius: 1rem;
+}
+
+.pot-button:focus-visible {
+  outline: 3px solid var(--color-garden-focus);
+  outline-offset: 2px;
+}
+
+.pot-hint,
+.pot-label,
+.tool-status,
+.garden-notice {
+  padding: 0.3em 0.65em;
+  border: 2px solid var(--color-garden-button-edge);
+  border-radius: 999px;
+  background: var(--color-garden-button);
+  color: var(--color-garden-ink);
+  font-size: clamp(0.64rem, 1.55cqw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  pointer-events: none;
+}
+
+.pot-hint,
+.pot-label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.pot-hint {
+  top: 54%;
+  border-style: dashed;
+}
+
+.pot-label {
+  top: 77%;
+}
+
+.tool-status,
+.garden-notice {
+  position: absolute;
+  left: 50%;
+  max-width: 86%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.tool-status {
+  top: clamp(3.5rem, 7cqw, 8rem);
+  width: max-content;
+}
+
+.garden-notice {
+  top: clamp(5.15rem, 11cqw, 12rem);
+  z-index: 2;
+  width: max-content;
+}
+
+.held-tool {
+  position: fixed;
+  z-index: 3;
+  width: clamp(4rem, 12vw, 11rem);
+  pointer-events: none;
+}
+
+.held-tool[data-tool='water'] {
+  transform: translate(-82%, -25%);
+}
+
+.held-tool[data-tool='shovel'] {
+  transform: translate(-50%, -85%);
+}
+
+.held-tool :is(svg, img) {
+  width: 100%;
+  filter: drop-shadow(0 3px 3px rgb(107 74 58 / 28%));
+}
+
+@media (pointer: fine) {
+  .pot-controls[data-tool] .pot-button {
+    cursor: none;
+  }
+}
+
+.plant-art {
+  animation: plant-appear 220ms ease-out;
+}
+
+.pot-effect {
+  position: absolute;
+  pointer-events: none;
+}
+
+.watering-drop {
+  position: absolute;
+  top: -14cqw;
+  width: clamp(6px, 1.8cqw, 30px);
+  max-width: none;
+  opacity: 0;
+  margin-left: var(--drop-offset);
+  animation: watering-fall 700ms ease-in var(--drop-delay) both;
+}
+
+.harvest-effect {
+  display: block;
+  width: max-content;
+  color: white;
+  font-size: clamp(0.9rem, 2.5cqw, 2rem);
+  font-weight: 700;
+  text-shadow: 0 1px 3px var(--color-garden-ink);
+  animation: harvest-rise 1.2s ease-out both;
+}
+
+@keyframes plant-appear {
+  from {
+    opacity: 0.55;
+  }
+}
+
+@keyframes watering-fall {
+  30% {
+    opacity: 0.95;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(12cqw);
+  }
+}
+
+@keyframes harvest-rise {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -1rem);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -3.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plant-art {
+    animation: none;
+  }
+  .pot-effect {
+    display: none;
+  }
+}
+
+.garden-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(29rem, calc(100% - 2rem));
+  max-height: min(85svh, 40rem);
+  margin: auto;
+  overflow: auto;
+  border: 3px solid var(--color-garden-button-edge);
+  border-radius: 1.5rem;
+  background: var(--color-garden-button);
+  color: var(--color-garden-ink);
+  box-shadow: 0 6px 0 var(--color-garden-button-edge);
+}
+
+.garden-dialog::backdrop {
+  background: rgb(107 74 58 / 38%);
+}
+
+.garden-dialog-body {
+  padding: clamp(0.75rem, 4vw, 1rem);
+}
+
+.garden-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.garden-dialog-header h2 {
+  font-size: 1.45rem;
+  font-weight: 750;
+}
+
+.dialog-close,
+.shop-tabs button,
+.trade-button {
+  cursor: pointer;
+  border: 2px solid var(--color-garden-button-edge);
+  border-radius: 0.85rem;
+  background: white;
+  color: var(--color-garden-ink);
+  font-weight: 700;
+}
+
+.dialog-close {
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  background: var(--color-garden-exit);
+  border-color: var(--color-garden-exit-edge);
+}
+
+.dialog-close svg,
+.trade-button svg,
+.inventory-price svg {
+  width: 1.2rem;
+}
+
+.shop-balance,
+.inventory-price,
+.trade-button {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.shop-balance {
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.shop-balance svg {
+  width: 1.45rem;
+}
+
+.shop-tabs {
+  display: flex;
+  gap: 0.45rem;
+  margin-bottom: 0.6rem;
+}
+
+.shop-tabs button {
+  flex: 1;
+  min-height: 2.55rem;
+  padding: 0.35rem 0.5rem;
+}
+
+.shop-tabs button[aria-pressed='true'],
+.trade-button {
+  background: var(--color-garden-shop);
+  border-color: var(--color-garden-shop-edge);
+}
+
+.shop-list,
+.inventory-grid {
+  display: grid;
+  gap: 0.4rem;
+  list-style: none;
+}
+
+.shop-row,
+.inventory-card {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem;
+  border: 2px solid var(--color-garden-button-edge);
+  border-radius: 1rem;
+  background: white;
+}
+
+.shop-row img,
+.inventory-card img {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+}
+
+.shop-row p,
+.shop-locked,
+.inventory-price,
+.dialog-empty,
+.shop-notice {
+  font-size: 0.875rem;
+}
+
+.trade-button {
+  min-height: 2.35rem;
+  padding: 0.2rem 0.65rem;
+}
+
+.trade-button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.shop-notice {
+  min-height: 1.6rem;
+  margin-top: 0.4rem;
+}
+
+.inventory-heading {
+  margin-block: 0.7rem 0.3rem;
+  font-weight: 750;
+}
+
+.inventory-grid {
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+}
+
+.inventory-card {
+  justify-content: center;
+  flex-direction: column;
+}
+
+.dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}

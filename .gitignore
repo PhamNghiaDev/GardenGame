@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+.playwright-cli/
+*.local
+*.log
+.claude/settings.local.json
+.DS_Store
+Thumbs.db
