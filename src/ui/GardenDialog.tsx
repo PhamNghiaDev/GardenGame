@@ -6,9 +6,15 @@ interface GardenDialogProps {
   title: string
   onClose: () => void
   children: ReactNode
+  className?: string
 }
 
-export function GardenDialog({ title, onClose, children }: GardenDialogProps) {
+export function GardenDialog({
+  title,
+  onClose,
+  children,
+  className = '',
+}: GardenDialogProps) {
   const dialog = useRef<HTMLDialogElement>(null)
   const titleId = useId()
 
@@ -22,7 +28,7 @@ export function GardenDialog({ title, onClose, children }: GardenDialogProps) {
   return (
     <dialog
       ref={dialog}
-      className="garden-dialog"
+      className={`garden-dialog ${className}`}
       aria-labelledby={titleId}
       onCancel={(event) => {
         event.preventDefault()

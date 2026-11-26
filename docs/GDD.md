@@ -36,7 +36,7 @@ Các mốc Rosie lấy từ prototype. Vàng ban đầu cũng lấy giá trị t
 
 ## Giao diện
 
-Scene giữ khung 4:3 và vị trí ba chậu từ [ver2.2.html](prototype/ver2.2.html). [Asset scene](../src/art/assets/scene/) chứa ảnh gốc của nền, ban công và chậu. [Asset Rosie](../src/art/assets/rosie/) chứa ba giai đoạn lớn, ảnh hoa thu hoạch và icon gói hạt. Các icon HUD có sẵn được lấy từ prototype.
+Scene giữ khung 4:3 và vị trí ba chậu từ [ver2.2.html](prototype/ver2.2.html). [Asset scene](../src/art/assets/scene/) chứa ảnh gốc của nền, ban công và chậu. [Asset Rosie](../src/art/assets/rosie/) chứa ba giai đoạn lớn và ảnh hoa vàng dùng chung cho hạt giống và hoa thu hoạch. Các icon HUD có sẵn được lấy từ prototype.
 
 | Vị trí    | Full                                                |
 | --------- | --------------------------------------------------- |

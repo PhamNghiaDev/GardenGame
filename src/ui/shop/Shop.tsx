@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { CoinIcon } from '../../art/GardenIcons'
-import seedPacket from '../../art/assets/rosie/seed-packet.svg'
-import harvest from '../../art/assets/rosie/harvest.png'
+import rosieFlower from '../../art/assets/rosie/harvest.png'
 import { PLANT_IDS, PLANTS } from '../../game/config/plants'
 import type { PlantId } from '../../game/config/plants'
 import { useGameStore } from '../../store/gameStore'
@@ -48,10 +47,10 @@ export function Shop({ notice, onClose, onBuy, onSell }: ShopProps) {
             const unlocked = save.unlockedPlantIds.includes(id)
             return (
               <li key={id} className="shop-row">
-                {id === 'rosie' && <img src={seedPacket} alt="" />}
+                {id === 'rosie' && <img src={rosieFlower} alt="" />}
                 <div className="min-w-0 flex-1">
                   <strong>Hạt {plant.name}</strong>
-                  {id === 'rosie' && <p>Hoa cúc hồng nhỏ xinh, dễ trồng.</p>}
+                  {id === 'rosie' && <p>Hoa cúc vàng nhỏ xinh, dễ trồng.</p>}
                 </div>
                 {unlocked ? (
                   <button
@@ -79,7 +78,7 @@ export function Shop({ notice, onClose, onBuy, onSell }: ShopProps) {
             const plant = PLANTS[id]
             return (
               <li key={id} className="shop-row">
-                {id === 'rosie' && <img src={harvest} alt="" />}
+                {id === 'rosie' && <img src={rosieFlower} alt="" />}
                 <div className="min-w-0 flex-1">
                   <strong>{plant.name}</strong>
                   <p>Trong túi · {save.harvestCounts[id]}</p>
