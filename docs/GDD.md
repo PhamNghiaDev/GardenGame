@@ -36,7 +36,7 @@ Các mốc Rosie lấy từ prototype. Vàng ban đầu cũng lấy giá trị t
 
 ## Giao diện
 
-Scene giữ khung 4:3 và vị trí ba chậu từ [ver2.2.html](../ver2.2.html). [Asset scene](../src/art/assets/scene/) chứa ảnh gốc của nền, ban công và chậu. [Asset Rosie](../src/art/assets/rosie/) chứa ba giai đoạn lớn, ảnh hoa thu hoạch và icon gói hạt. Các icon HUD có sẵn được lấy từ prototype.
+Scene giữ khung 4:3 và vị trí ba chậu từ [ver2.2.html](prototype/ver2.2.html). [Asset scene](../src/art/assets/scene/) chứa ảnh gốc của nền, ban công và chậu. [Asset Rosie](../src/art/assets/rosie/) chứa ba giai đoạn lớn, ảnh hoa thu hoạch và icon gói hạt. Các icon HUD có sẵn được lấy từ prototype.
 
 | Vị trí    | Full                                                |
 | --------- | --------------------------------------------------- |
@@ -51,6 +51,10 @@ Scene giữ khung 4:3 và vị trí ba chậu từ [ver2.2.html](../ver2.2.html)
 Phím `C` đổi giữa Full và Compact. Mở `/?compact` để vào thẳng Compact. Exit hiển thị thông báo như prototype.
 
 **Âm thanh** gồm nhạc nền và SFX tưới, thu hoạch, mua, bán. Tải khi cần và lưu tùy chọn tắt/bật tiếng. Hiện có nút lưu tùy chọn. Nhạc và SFX đi vào M8.
+
+## Kiến trúc triển khai
+
+Bản web dùng Vite, TypeScript strict, React 19, Tailwind CSS 4 và scene SVG. Zustand lưu save có phiên bản vào localStorage. Adapter cửa sổ nổi dành cho Document PiP và wrapper âm thanh dùng Howler. Vitest, ESLint và Prettier dùng để kiểm tra và định dạng code.
 
 ## Quyết định còn mở
 

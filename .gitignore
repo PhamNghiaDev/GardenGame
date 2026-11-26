@@ -7,3 +7,5 @@ coverage/
 .claude/settings.local.json
 .DS_Store
 Thumbs.db
+CLAUDE.local.md
+.playwright-mcp/

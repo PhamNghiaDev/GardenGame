@@ -1,6 +1,6 @@
 import type { PotId } from '../../game/types'
 
-// Original coordinates in the 1920 × 1440 scene from ver2.2.html.
+// Original coordinates in the 1920 × 1440 scene from docs/prototype/ver2.2.html.
 export const stageWidth = 1920
 export const stageHeight = 1440
 export const potSize = 320

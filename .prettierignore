@@ -3,4 +3,4 @@ dist/
 coverage/
 .playwright-cli/
 pnpm-lock.yaml
-ver2.2.html
+docs/prototype/ver2.2.html

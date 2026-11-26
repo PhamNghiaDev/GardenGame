@@ -11,18 +11,28 @@
       "Bash(git status *)",
       "Bash(git diff *)",
       "Bash(git log *)",
+      "Bash(git add *)",
       "PowerShell(pnpm dev *)",
       "PowerShell(pnpm build *)",
       "PowerShell(pnpm lint *)",
       "PowerShell(pnpm typecheck *)",
       "PowerShell(pnpm test *)",
       "PowerShell(pnpm check *)",
+      "PowerShell(pnpm.cmd dev *)",
+      "PowerShell(pnpm.cmd build *)",
+      "PowerShell(pnpm.cmd lint *)",
+      "PowerShell(pnpm.cmd typecheck *)",
+      "PowerShell(pnpm.cmd test *)",
+      "PowerShell(pnpm.cmd check *)",
       "PowerShell(git status *)",
       "PowerShell(git diff *)",
-      "PowerShell(git log *)"
+      "PowerShell(git log *)",
+      "PowerShell(git add *)"
     ],
     "deny": [
+      "Read(.env*)",
       "Bash(rm -rf *)",
+      "Bash(rm -fr *)",
       "Bash(git push --force *)",
       "Bash(git push * --force)",
       "Bash(git push * --force *)",
@@ -45,10 +55,32 @@
           {
             "type": "command",
             "command": "node",
-            "args": [
-              "${CLAUDE_PROJECT_DIR}/.claude/hooks/format-edited-file.mjs"
-            ],
+            "args": ["${CLAUDE_PROJECT_DIR}/.claude/hooks/format.mjs"],
             "timeout": 15
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PROJECT_DIR}/.claude/hooks/session-start.mjs"],
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PROJECT_DIR}/.claude/hooks/pre-compact.mjs"],
+            "timeout": 5
           }
         ]
       }
